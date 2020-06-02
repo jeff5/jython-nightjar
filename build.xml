@@ -514,13 +514,13 @@ ${build.git.status}
     <target name="git-is-tagged" depends="git-present, common-version-strings" if="${git.present}">
         <!-- Set build.git.tag, and if it matches this version, set build.git.is_tagged -->
         <exec executable="git" outputproperty="build.git.tag">
-            <arg line="describe --always --dirty"/>
+            <arg line="describe --all --always --dirty"/>
         </exec>
         <!-- Check we are at a tag matching the release claimed in the configuration. -->
         <condition property="build.git.is_tagged">
             <and>
                 <istrue value="${git.present}" />
-                <equals arg1="${build.git.tag}" arg2="v${jython.release}" />
+                <equals arg1="${build.git.tag}" arg2="tags/v${jython.release}" />
             </and>
         </condition>
     </target>
