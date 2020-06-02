@@ -319,7 +319,7 @@ task generateVersionInfo(
         property('jython.build.git_branch', branch)
         println "    jython.build.git_branch = ${branch}"
 
-        def tag = 'git describe --all --always --dirty'.execute().text.split('\n', 2)[0]
+        def tag = 'git describe --always --dirty'.execute().text.split('\n', 2)[0]
         property('jython.build.git_tag', tag)
         println "    jython.build.git_tag = ${tag}"
 
