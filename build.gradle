@@ -386,7 +386,7 @@ task generateVersionInfo(
 
         if (snapshotSuffix == null) {
             // The version is named correctly for a release. Make safety checks on the repo.
-            String expectTag = "v$release"
+            String expectTag = "tags/v$release"
             String message = null;
             if (tag.endsWith('-dirty')) {
                 message = 'Version-controlled files have been edited since the last commit'
