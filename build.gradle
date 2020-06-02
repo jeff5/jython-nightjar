@@ -314,15 +314,24 @@ task generateVersionInfo(
     // Create the properties when the task runs. But do it before the write!
     doFirst {
 
-        // Query Git for version and tagging.
+        /*
+         * Query Git for version and tagging. The git commands are exactly
+         * those used by CPython to create constants configure.ac, but do not
+         * correspond very well to their names.
+         */
+        
+        // Not much like a branch. Used only if git_tag is blank.
         def branch = 'git name-rev --name-only HEAD'.execute().text.split('\n', 2)[0]
         property('jython.build.git_branch', branch)
         println "    jython.build.git_branch = ${branch}"
 
-        def tag = 'git describe --always --dirty'.execute().text.split('\n', 2)[0]
+        // When tagged, the result is "tags/vX.Y.Zrc9", or whatever.
+        // When not, tagged it is the (short) revision number.
+        def tag = 'git describe --all --always --dirty'.execute().text.split('\n', 2)[0]
         property('jython.build.git_tag', tag)
         println "    jython.build.git_tag = ${tag}"
 
+        // Revision number (short = 7 hex digits)
         def ident = 'git rev-parse --short HEAD'.execute().text.split('\n', 2)[0]
         property('jython.build.git_version', ident)
         println "    jython.build.git_version = ${ident}"
