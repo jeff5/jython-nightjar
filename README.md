@@ -2,8 +2,11 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.python/jython-standalone/badge.svg)](https://search.maven.org/artifact/org.python/jython-standalone/)
 [![Javadocs](https://www.javadoc.io/badge/org.python/jython-standalone.svg)](https://www.javadoc.io/doc/org.python/jython-standalone)
 
-This is the development repository of Jython,
+This isn't really the development repository of Jython,
 the implementation of Python 2.7 in Java.
+
+It's just a copy I made as an experiment.
+
 Along with good (not perfect!) language
 and runtime compatibility with CPython 2.7,
 Jython 2.7 provides substantial support of the Python ecosystem.
